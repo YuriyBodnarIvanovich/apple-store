@@ -3,7 +3,8 @@ import NoticeStyle from './MainNotice.module.css';
 import {useSelector} from "react-redux";
 
 const MainNotice = () =>{
-    const data = true;
+    const data = false;
+    
     return(
         <div className={NoticeStyle.content}>
             <div className={NoticeStyle.main}>
