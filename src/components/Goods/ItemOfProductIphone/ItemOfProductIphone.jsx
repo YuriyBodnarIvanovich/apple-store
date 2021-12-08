@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Style from './ItemOfProduct.module.css'
-// import IphoneModal from "./ModalWindowOfProduct/IPhone/IphoneModal";
+import IphoneModal from "./ModalWindowOfProduct/IphoneModal";
 import {useDispatch, useSelector} from "react-redux";
 // import axios from "axios";
 
@@ -100,9 +100,9 @@ const ItemOfProductIphone = (props) =>{
             <div className={Style.for_button}>
                 <button onClick={()=>{setStatusOfItem(true)}}>Show More</button>
             </div>
-            {/* {statusOfItem ? <IphoneModal  setStatusOfItem={setStatusOfItem}
+            {statusOfItem ? <IphoneModal  setStatusOfItem={setStatusOfItem}
                 CharactersIphoneData={<CharactersIphoneData/>} name={props.name} photoData={props.photoData} price={props.price}
-                    statusOfOpen={'goods'}/> : null} */}
+                    statusOfOpen={'goods'}/> : null}
             {confirmDeleteBox ? <ConfirmDelete/> : null}
         </div>
     )
