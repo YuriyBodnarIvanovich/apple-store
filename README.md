@@ -1,12 +1,12 @@
 
 # Product overview
 
-**Веб застосунок для продажу техніки Apple в Україні** 
+**Web application for selling Apple equipment in Ukraine** 
   
-Буде реалізовані наступні ролі: 
-* Адміністратор - контролює продавців, має змогу редагувати та видаляти товари продавців;
-* Продавець - створення, видалення та редагування власних товарів;
-* Покупець -  тільки можливість покупки товарів;
+The following roles will be implemented:
+* Administrator - controls sellers, has the ability to edit and delete sellers' products;
+* Seller - create, delete and edit your own products;
+* Buyer - only the ability to purchase goods;
  
 ## Stack technologies: ReactJS, Java, MongoDB, Spring, Redux.
 
@@ -18,10 +18,10 @@
 * Backend repo - https://github.com/Kukhtar/appleStore
 
 ## Code styling:
-Використовуємо офіційні стандарти:
+We use official standards:
 * Java - [Java Code Conventions](https://www.oracle.com/technetwork/java/codeconventions-150003.pdf)
 * JavaScript - [ECMAScript 2021](https://262.ecma-international.org/12.0/)
 
 
 ## Branching policy:
-Основна гілка репозиторію `main`. При додаванні нового функціоналу створюються відповідні гілки. Після перевірки на конфлікти відкривається `Pull Request`.
+The main branch of the repository `main`. When adding new functionality, the corresponding branches are created. After the conflict check, `Pull Request` opens.
