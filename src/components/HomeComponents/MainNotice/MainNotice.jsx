@@ -1,9 +1,11 @@
 import React from 'react';
 import NoticeStyle from './MainNotice.module.css';
-// import {useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 const MainNotice = () => {
   const data = false;
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
+
 
   return (
     <div className={NoticeStyle.content}>
@@ -11,14 +13,14 @@ const MainNotice = () => {
         <div>
           <p
             className={`${
-              data.darkTheme ? NoticeStyle.title_dark : NoticeStyle.title
+              themeMode ? NoticeStyle.title_dark : NoticeStyle.title
             }`}
           >
             Certified products Apple <b>at an affordable price</b>
           </p>
           <p
             className={`${
-              data.darkTheme
+              themeMode
                 ? NoticeStyle.second_title_dark
                 : NoticeStyle.second_title
             }`}

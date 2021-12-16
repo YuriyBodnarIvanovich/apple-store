@@ -1,8 +1,10 @@
 import React from 'react';
 import Style from './ShopAppleDevices.module.css';
-// import {useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 const ShopAppleDevices = () => {
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
+
   const data = true;
   const catalogData = [
     {
@@ -26,7 +28,7 @@ const ShopAppleDevices = () => {
   ];
 
   const catalog = catalogData.map((item) => {
-    return data.darkTheme ? (
+    return themeMode ? (
       <div className={Style[item.style]} style={{ backgroundColor: '#1F201F' }}>
         <img src={item.src} alt='alt' />
         <div>
@@ -57,7 +59,7 @@ const ShopAppleDevices = () => {
     <div className={Style.appleDevice_container}>
       <div
         className={`${
-          data.darkTheme
+          themeMode
             ? Style.appleDevice_container_two_dark
             : Style.appleDevice_container_two
         }`}
@@ -66,13 +68,13 @@ const ShopAppleDevices = () => {
           <div className={Style.appleDevice_title_container_two}>
             <div className={Style.appleDevice_title_container}>
               <div className={Style.main_title}>
-                {data.darkTheme ? (
+                {themeMode ? (
                   <h1 style={{ color: 'white' }}>Shop at Apple Devices</h1>
                 ) : (
                   <h1>Shop at Apple Devices</h1>
                 )}
               </div>
-              {data.darkTheme ? (
+              {themeMode ? (
                 <p style={{ color: 'white' }}>
                   Why have hundreds of thousands of customers chosen our store
                   for more than 10 years?

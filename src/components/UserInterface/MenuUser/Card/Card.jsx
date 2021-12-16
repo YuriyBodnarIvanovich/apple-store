@@ -5,7 +5,8 @@ import axios from 'axios';
 import Confirm from './Confirm/Confirm';
 
 const Card = (props) => {
-  const data = useSelector((state) => state.ApplePage);
+  const data = useSelector((state) => state.MainPage);
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
   const dispatch = useDispatch();
 
   const ItemOfTable = (propsItem) => {
@@ -89,7 +90,7 @@ const Card = (props) => {
     );
   };
 
-  const catalog = data.Users[0].CartList.map((item, index) => {
+  const catalog = data.user.cartList.map((item, index) => {
     return (
       <ItemOfTable
         idCard={item.idCard}
@@ -102,7 +103,7 @@ const Card = (props) => {
   });
   return (
     <div
-      className={`${data.darkTheme ? Style.container_dark : Style.container}`}
+      className={`${themeMode ? Style.container_dark : Style.container}`}
     >
       <div className={Style.container_of_card}>
         <div className={Style.top}>
@@ -118,7 +119,7 @@ const Card = (props) => {
         </div>
         <div
           className={`${
-            data.darkTheme
+            themeMode
               ? Style.container_of_table_dark
               : Style.container_of_table
           }`}

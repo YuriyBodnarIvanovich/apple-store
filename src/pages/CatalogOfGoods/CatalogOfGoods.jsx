@@ -8,7 +8,6 @@ import Goods from '../../components/Goods/Goods';
 const CatalogOfGoods = () => {
   const data = useSelector((state) => state.GoodsPage);
   // const dispatch = useDispatch();
-  console.log(JSON.stringify(data));
   return (
     <div>
       <MainNotice />

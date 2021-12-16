@@ -12,6 +12,7 @@ import Menu from '../src/components/Menu/Menu';
 
 function App() {
   const dispatch = useDispatch();
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
 
   const [showInputBox, setStatusOfInputBox] = useState(false);
   document.title = useSelector((state) => state.MainPage.title);
@@ -24,37 +25,37 @@ function App() {
       }
     }
   }
-  function checkJWT() {
-    axios
-      .post(
-        '/checkJWT',
-        {},
-        {
-          headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
-        }
-      )
-      .then(function (response) {
-        console.log(response.data.userData);
-        let resUser = JSON.parse(JSON.stringify(response.data.userData));
-        dispatch({ type: 'CHANGE_ARRAY_OF_USERS', array: resUser });
-        dispatch({ type: 'CHANGE_STATUS_OF_USER', userStatus: true });
-        statusOfRoles(resUser);
-      })
-      .catch(function (error) {
-        console.log(error);
-        dispatch({ type: 'CHANGE_STATUS_OF_USER', userStatus: false });
-      });
-  }
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTimeout(checkJWT(), 0);
-    }, 0);
-    return () => clearTimeout(timer);
-  }, []);
+  // function checkJWT() {
+  //   axios
+  //     .post(
+  //       '/checkJWT',
+  //       {},
+  //       {
+  //         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  //       }
+  //     )
+  //     .then(function (response) {
+  //       console.log(response.data.userData);
+  //       let resUser = JSON.parse(JSON.stringify(response.data.userData));
+  //       dispatch({ type: 'CHANGE_ARRAY_OF_USERS', array: resUser });
+  //       dispatch({ type: 'CHANGE_STATUS_OF_USER', userStatus: true });
+  //       statusOfRoles(resUser);
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //       dispatch({ type: 'CHANGE_STATUS_OF_USER', userStatus: false });
+  //     });
+  // }
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setTimeout(checkJWT(), 0);
+  //   }, 0);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <BrowserRouter>
-      <div className='main_Light'>
+      <div className={`${themeMode ? "main_Dark" : "main_Light"}`}>
         <Menu setStatusOfInputBox={setStatusOfInputBox} />
         {showInputBox ? (
           <AuthBox
@@ -64,6 +65,12 @@ function App() {
         ) : null}
         <Route exact path='/' render={() => <MainPage />} />
         <Route exact path='/CatalogOfGoods' render={() => <CatalogOfGoods />} />
+        <div className="for_change_theme">
+            <label className="switch">
+                <input type="checkbox"  onClick={()=>{dispatch({type:"CHNAGE_THEME",themeMode: !themeMode})}}/>
+                <span className="slider"/>
+            </label>
+        </div>
         <Footer />
       </div>
     </BrowserRouter>

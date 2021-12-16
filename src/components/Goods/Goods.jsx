@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Style from './Goods.module.css';
 import Slider from '@material-ui/core/Slider';
 import { makeStyles } from '@material-ui/core/styles';
-// import axios from "axios";
+import axios from "axios";
 import { useSelector } from 'react-redux';
 import ItemOfProductIphone from './ItemOfProductIphone/ItemOfProductIphone';
 // import ItemOfMac from "../ItemOfProductionMac/ItemOfMac";
@@ -13,7 +13,9 @@ const Goods = () => {
   const dataIphone = useSelector((state) => state.GoodsPage.goods);
   console.log(dataIphone);
   const dataMac = useSelector((state) => state.macPage);
-  //   const dispatch = useDispatch();
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
+
+    // const dispatch = useDispatch();
 
   // useEffect(() => {
   //     axios.get('/iPhone').then((response) => {
@@ -27,14 +29,14 @@ const Goods = () => {
   //         });
   // },[]);
 
-  // useEffect(() => {
-  //     axios.get('/mac').then((response) => {
-  //         let resData = response.data;
-  //         console.log("Mac page");
-  //         console.log(resData);
-  //         dispatch({type:'PUT_ARRAY',newArray:resData});
-  //     });
-  // }, []);
+  useEffect(() => {
+      axios.get('https://nameless-escarpment-09940.herokuapp.com/product?page=0&size=5').then((response) => {
+          let resData = response;
+          console.log("Mac page");
+          console.log(resData);
+          // dispatch({type:'PUT_ARRAY',newArray:resData});
+      });
+  }, []);
 
   const ErrorPage = () => {
     return (
@@ -133,11 +135,11 @@ const Goods = () => {
   return (
     <div
       className={`${
-        dataApple.darkTheme ? Style.container_dark : Style.container
+        themeMode ? Style.container_dark : Style.container
       }`}
     >
       <div className={Style.main}>
-        {dataApple.darkTheme ? (
+        {themeMode ? (
           <div className={Style.for_title}>
             <h1 style={{ color: 'white' }}>
               Catalog of Apple equipment and devices
@@ -159,7 +161,7 @@ const Goods = () => {
         <div className={Style.options_container}>
           <div
             className={`${
-              dataApple.darkTheme ? Style.options_dark : Style.options
+              themeMode ? Style.options_dark : Style.options
             }`}
           >
             <div className={Style.for_title_in_options}>
@@ -173,7 +175,7 @@ const Goods = () => {
               {statusOfMenu ? (
                 <div
                   className={`${
-                    dataApple.darkTheme
+                    themeMode
                       ? Style.menu_type_of_product_dark
                       : Style.menu_type_of_product
                   }`}
@@ -204,7 +206,7 @@ const Goods = () => {
             </div>
             <div
               className={`${
-                dataApple.darkTheme ? Style.for_search_dark : Style.for_search
+                themeMode ? Style.for_search_dark : Style.for_search
               }`}
             >
               <input />

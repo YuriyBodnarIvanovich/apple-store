@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Style from './IphoneModal.module.css';
 import ImgContent from './ImgContent/ImgContent';
 // import axios from "axios";
-// import {useDispatch, useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 const IphoneModal = (props) => {
   const [indexOfColor, setIndexOfColor] = useState(0);
@@ -10,6 +10,8 @@ const IphoneModal = (props) => {
   const [colorOfProduct, setColorOfProduct] = useState(
     props.photoData[0].color
   );
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
+
   // const data = useSelector(state=>state.AdminPage);
   const dataUser = true;
   // const dispatch = useDispatch();
@@ -25,7 +27,7 @@ const IphoneModal = (props) => {
     return (
       <div
         className={`${
-          dataUser.darkTheme ? Style.color_item_dark : Style.color_item
+          themeMode ? Style.color_item_dark : Style.color_item
         }`}
         style={{ backgroundColor: `${item.color}` }}
         onClick={() => setColor(item.color, index)}
@@ -64,18 +66,18 @@ const IphoneModal = (props) => {
   return (
     <div
       className={`${
-        dataUser.darkTheme ? Style.container_dark : Style.container
+        themeMode ? Style.container_dark : Style.container
       }`}
     >
       <div
         className={`${
-          dataUser.darkTheme
+          themeMode
             ? Style.container_of_item_dark
             : Style.container_of_item
         }`}
       >
         <div className={Style.exit}>
-          {dataUser.darkTheme ? (
+          {themeMode ? (
             <b
               style={{ color: 'white' }}
               onClick={() => {
@@ -94,7 +96,7 @@ const IphoneModal = (props) => {
             />
           )}
         </div>
-        {dataUser.darkTheme ? (
+        {themeMode ? (
           <h1 style={{ color: 'white' }}>{props.name}</h1>
         ) : (
           <h1>{props.name}</h1>
@@ -103,7 +105,7 @@ const IphoneModal = (props) => {
           <div className={Style.left_content}>
             <div className={Style.container_of_colors}>{colorData}</div>
             <div>
-              {dataUser.darkTheme ? (
+              {themeMode ? (
                 <p style={{ color: 'white' }}>
                   <b>Price:</b>{' '}
                   <em style={{ color: 'white' }}>{props.price + ' ₴'}</em>
@@ -114,7 +116,7 @@ const IphoneModal = (props) => {
                 </p>
               )}
 
-              {dataUser.darkTheme ? (
+              {themeMode ? (
                 <h3 style={{ color: 'white' }}>Characters:</h3>
               ) : (
                 <h3>Characters:</h3>

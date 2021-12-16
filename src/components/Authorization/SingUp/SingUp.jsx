@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import SingUpStyle from './SingUp.module.css';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 const SingUp = (props) => {
   // const dataApple = useSelector((state) => state.ApplePage);
-
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [userPassword, setUserPassword] = useState('');

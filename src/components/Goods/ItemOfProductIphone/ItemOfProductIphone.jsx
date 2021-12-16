@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Style from './ItemOfProduct.module.css';
 import IphoneModal from './ModalWindowOfProduct/IphoneModal';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import axios from "axios";
 
 const ItemOfProductIphone = (props) => {
@@ -9,6 +9,7 @@ const ItemOfProductIphone = (props) => {
   const dataApple = true;
   const [statusOfItem, setStatusOfItem] = useState(false);
   const [confirmDeleteBox, setStatusOfDeleteBox] = useState(false);
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
 
   // const dataIphone = useSelector((state) => state.IphonePage);
   // const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const ItemOfProductIphone = (props) => {
     return (
       <div
         className={`${
-          dataApple.darkTheme ? Style.characters_dark : Style.characters
+          themeMode ? Style.characters_dark : Style.characters
         }`}
       >
         {props.character?.screen !== '' ? (
@@ -102,7 +103,7 @@ const ItemOfProductIphone = (props) => {
   return (
     <div
       className={`${
-        dataApple.darkTheme ? Style.container_dark : Style.container
+        themeMode ? Style.container_dark : Style.container
       }`}
     >
       {props.statusOfDelete ? (
@@ -124,7 +125,7 @@ const ItemOfProductIphone = (props) => {
         </div>
       </div>
       <p className={Style.container_of_name}>
-        {dataApple.darkTheme ? (
+        {themeMode ? (
           <b style={{ color: 'white' }}>{props.name}</b>
         ) : (
           <b>{props.name}</b>
@@ -133,7 +134,7 @@ const ItemOfProductIphone = (props) => {
       <CharactersIphoneData />
       <div
         className={`${
-          dataApple.darkTheme ? Style.for_price_dark : Style.for_price
+          themeMode ? Style.for_price_dark : Style.for_price
         }`}
       >
         <p>{props.price + ' ₴'}</p>

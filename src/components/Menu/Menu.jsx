@@ -1,13 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import MenuStyle from './Menu.module.css';
 import { NavLink } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import UserInterface from '../UserInterface/UserInterface';
 
 const Menu = (props) => {
-  const data = true;
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
   const dispatch = useDispatch();
-
+  const [authDone, setAuthDone] = useState(true)
   const handleTitle = (title) => {
     dispatch({ type: 'CHNAGE_TITLE', title });
   };
@@ -17,7 +17,7 @@ const Menu = (props) => {
       <div className={MenuStyle.main}>
         <div className={MenuStyle.logo}>
           <NavLink to='/' onClick={() => handleTitle('Apple device')}>
-            {data.darkTheme ? (
+            {themeMode ? (
               <h3 style={{ color: 'white' }}>Apple device</h3>
             ) : (
               <img
@@ -30,7 +30,7 @@ const Menu = (props) => {
           </NavLink>
         </div>
         <div className={MenuStyle.menu_logo}>
-          {data.darkTheme ? (
+          {themeMode ? (
             <p style={{ color: 'white' }}>Menu</p>
           ) : (
             <img
@@ -42,7 +42,7 @@ const Menu = (props) => {
         <div className={MenuStyle.add_information_container}>
           <div
             className={`${
-              data.darkTheme
+              themeMode
                 ? MenuStyle.add_information_dark
                 : MenuStyle.add_information
             }`}
@@ -66,12 +66,12 @@ const Menu = (props) => {
           <div className={MenuStyle.number_of_phone_container}>
             <div
               className={`${
-                data.darkTheme
+                themeMode
                   ? MenuStyle.number_of_phone_dark
                   : MenuStyle.number_of_phone
               }`}
             >
-              {data.darkTheme ? null : (
+              {themeMode ? null : (
                 <img
                   className={MenuStyle.numberOfPhoneIMG}
                   src='https://img.icons8.com/android/24/000000/phone.png'
@@ -79,7 +79,7 @@ const Menu = (props) => {
                 />
               )}
 
-              {data.darkTheme ? (
+              {themeMode ? (
                 <p className={MenuStyle.number_of_phone_title_dark}>
                   +38 099 999 9999
                 </p>
@@ -88,7 +88,7 @@ const Menu = (props) => {
                   +38 099 999 9999
                 </p>
               )}
-              {data.userStatus ? (
+              {authDone ? (
                 <UserInterface />
               ) : (
                 <button

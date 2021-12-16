@@ -1,14 +1,16 @@
 import React from 'react';
 import ForceStyle from './Footer.module.css';
+import {useDispatch, useSelector} from "react-redux";
 
 const Footer = () => {
   const data = true;
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
 
   return (
-    <div className={`${data.darkTheme ? ForceStyle.end_dark : ForceStyle.end}`}>
+    <div className={`${themeMode ? ForceStyle.end_dark : ForceStyle.end}`}>
       <div className={ForceStyle.container}>
         <div className={ForceStyle.logo}>
-          {data.darkTheme ? (
+          {themeMode ? (
             <h3 style={{ color: 'white' }}>Apple device</h3>
           ) : (
             <img
@@ -20,7 +22,7 @@ const Footer = () => {
           )}
         </div>
         <div className={ForceStyle.info}>
-          {data.darkTheme ? (
+          {themeMode ? (
             <p style={{ color: 'white' }}>
               LLC "Apple Devices", 123456, Moscow, st. Central 1, office 1 TIN
               1234567890 OGRN 123456789012
@@ -33,7 +35,7 @@ const Footer = () => {
           )}
         </div>
         <div className={ForceStyle.container_of_number}>
-          {data.darkTheme ? (
+          {themeMode ? (
             <div className={ForceStyle.number_of_phone}>
               <img
                 src='https://www.flaticon.com/svg/vstatic/svg/2948/2948005.svg?token=exp=1616859060~hmac=1db4a27b6966a4b71bf8203d2277b73f'
@@ -51,7 +53,7 @@ const Footer = () => {
             </div>
           )}
           <div className={ForceStyle.info_add}>
-            {data.darkTheme ? (
+            {themeMode ? (
               <p style={{ color: 'white' }}>The call in Ukraine is free</p>
             ) : (
               <p>The call in Ukraine is free</p>

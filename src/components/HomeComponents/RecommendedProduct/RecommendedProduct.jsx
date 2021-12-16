@@ -1,23 +1,25 @@
 import React from 'react';
 import ProductStyle from './RecommendedProduct.module.css';
+import {useDispatch, useSelector} from "react-redux";
 
 const RecommendedProduct = () => {
   const data = true;
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
 
   return (
     <div
       className={`${
-        data.darkTheme ? ProductStyle.container_dark : ProductStyle.container
+        themeMode ? ProductStyle.container_dark : ProductStyle.container
       }`}
     >
       <div
         className={`${
-          data.darkTheme ? ProductStyle.main_dark : ProductStyle.main
+          themeMode ? ProductStyle.main_dark : ProductStyle.main
         }`}
       >
         <div className={ProductStyle.second_container}>
           <div className={ProductStyle.first_title}>
-            {data.darkTheme ? (
+            {themeMode ? (
               <h2 style={{ color: 'white' }}>
                 Apple iMac Pro 2013 with 50% discount!
               </h2>
@@ -26,7 +28,7 @@ const RecommendedProduct = () => {
             )}
           </div>
           <div className={ProductStyle.second_title}>
-            {data.darkTheme ? (
+            {themeMode ? (
               <p style={{ color: 'white' }}>
                 <text>Have time to order the Apple iMac Pro 2013</text>
                 <br />
@@ -49,7 +51,7 @@ const RecommendedProduct = () => {
                 alt='alt'
               />
             </div>
-            {data.darkTheme ? (
+            {themeMode ? (
               <div className={ProductStyle.text_content}>
                 <p style={{ color: 'white' }}>
                   Professionals like to work on the iMac. That's why we've

@@ -1,8 +1,11 @@
 import React from 'react';
 import BlogStyle from './Blog.module.css';
+import {useDispatch, useSelector} from "react-redux";
 
 const Blog = () => {
   const data = true;
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
+
 
   const catalogInfo = [
     {
@@ -52,7 +55,7 @@ const Blog = () => {
   ];
 
   const catalog = catalogInfo.map((item) => {
-    return data.darkTheme ? (
+    return themeMode ? (
       <div className={BlogStyle.item}>
         <img src={item.imgSrc} alt='catalog' />
         <p style={{ color: 'white' }}>
@@ -75,14 +78,14 @@ const Blog = () => {
     <div className={BlogStyle.container}>
       <div
         className={`${
-          data.darkTheme
+          themeMode
             ? BlogStyle.container_two_dark
             : BlogStyle.container_two
         }`}
       >
         <div className={BlogStyle.main}>
           <div className={BlogStyle.title_main}>
-            {data.darkTheme ? (
+            {themeMode ? (
               <h1 style={{ color: 'white' }}>Read our blog</h1>
             ) : (
               <h1>Read our blog</h1>
@@ -90,13 +93,13 @@ const Blog = () => {
           </div>
           <div
             className={`${
-              data.darkTheme
+              themeMode
                 ? BlogStyle.plain_container_dark
                 : BlogStyle.plain_container
             }`}
           >
             <div className={BlogStyle.title_in_plain}>
-              {data.darkTheme ? (
+              {themeMode ? (
                 <p style={{ color: 'white' }}>
                   We share the experience of using Apple equipment and gadgets
                   first hand

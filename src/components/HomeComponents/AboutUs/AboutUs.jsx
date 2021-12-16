@@ -1,12 +1,15 @@
 import React from 'react';
 import Style from './About_us.module.css';
+import { useSelector, useDispatch } from 'react-redux';
 
 const AboutUs = () => {
+  const themeMode = useSelector((state) => state.MainPage.themeMode);
+
   const data = true;
   return (
     <div
       className={`${
-        data.darkTheme
+        themeMode
           ? Style.about_us_container_dark
           : Style.about_us_container
       }`}
@@ -19,13 +22,13 @@ const AboutUs = () => {
           alt='apple-office'
         />
         <div className={Style.about_us_text_container}>
-          {data.darkTheme ? (
+          {themeMode ? (
             <h1 style={{ color: 'white' }}>Who are we?</h1>
           ) : (
             <h1>Who are we?</h1>
           )}
           <div className={Style.for_hr}>
-            {data.darkTheme ? (
+            {themeMode ? (
               <hr style={{ backgroundColor: 'white' }} />
             ) : (
               <div className={Style.for_hr}>
@@ -33,7 +36,7 @@ const AboutUs = () => {
               </div>
             )}
           </div>
-          {data.darkTheme ? (
+          {themeMode ? (
             <p
               className={Style.add_information_title}
               style={{ color: 'white' }}
