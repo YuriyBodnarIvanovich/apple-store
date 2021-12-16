@@ -26,7 +26,7 @@ const Price = () =>{
     }else {
         return(
             <div className={Style.name_container}>
-                <input placeholder={"Price of Product"} value={price}
+                <input type="number" placeholder={"Price of Product"} value={price}
                        onChange={event => {setPrice(event.target.value)}}/>
                 <button onClick={()=>{savePrice()}}>Next</button>
             </div>

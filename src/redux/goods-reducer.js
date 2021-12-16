@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 const CHNAGE_TITLE = 'CHNAGE_TITLE';
-
+const CHANGE_PRODUCT = 'CHANGE_PRODUCT'
 const intialState = {
   goods: [
     {
@@ -149,6 +149,12 @@ const goodsReducer = (state = intialState, action) => {
       return {
         ...state,
         title: action.title,
+      };
+    }
+    case CHANGE_PRODUCT: {
+      return {
+        ...state,
+        goods: action.goods,
       };
     }
     default:

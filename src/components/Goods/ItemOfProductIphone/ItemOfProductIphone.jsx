@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const ItemOfProductIphone = (props) => {
   // const dataApple = useSelector(state=> state.ApplePage);
-  const dataApple = true;
   const [statusOfItem, setStatusOfItem] = useState(false);
   const [confirmDeleteBox, setStatusOfDeleteBox] = useState(false);
   const themeMode = useSelector((state) => state.MainPage.themeMode);
+  const dataIphone = useSelector((state) => state.GoodsPage.goods);
 
   // const dataIphone = useSelector((state) => state.IphonePage);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const CharactersIphoneData = () => {
     return (
@@ -52,6 +52,8 @@ const ItemOfProductIphone = (props) => {
   };
 
   function delete_product() {
+    const data = dataIphone.filter(item => item.name !== props.name);
+    dispatch({ type: 'CHANGE_PRODUCT', goods: data });
     // axios.post('/deleteProduct', {
     //     name:props.name,
     // }, {headers: {"Authorization" : `Bearer ${localStorage.getItem('token')}`}})
@@ -67,7 +69,7 @@ const ItemOfProductIphone = (props) => {
     //     })
     //     .catch(function (error) {
     //         console.log(error);
-    //     });
+    //     }); 
   }
 
   function save_product() {
@@ -131,7 +133,9 @@ const ItemOfProductIphone = (props) => {
           <b>{props.name}</b>
         )}
       </p>
-      <CharactersIphoneData />
+      {/* <div styled={{marginTop:"-50px"}}> */}
+        <CharactersIphoneData />
+      {/* </div> */}
       <div
         className={`${
           themeMode ? Style.for_price_dark : Style.for_price

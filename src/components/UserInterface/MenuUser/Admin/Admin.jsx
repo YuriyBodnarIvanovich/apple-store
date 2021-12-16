@@ -6,6 +6,7 @@ import CatalogOfProduct from "./DeleteProduct/CatalogOfProduct/CatalogOfProduct"
 import GrantAccess from "./GrantAccess/GrantAccess";
 
 const Admin = (props) =>{
+    const themeMode = useSelector((state) => state.MainPage.themeMode);
 
 
     const dataApple = useSelector(state=>state.ApplePage);
@@ -37,7 +38,7 @@ const Admin = (props) =>{
 
     return(
         <div className={Style.container}>
-            <div className={`${dataApple.darkTheme ? Style.container_of_AdminPage_dark : Style.container_of_AdminPage}`}>
+            <div className={`${themeMode ? Style.container_of_AdminPage_dark : Style.container_of_AdminPage}`}>
                 <div className={Style.top}>
                     <div className={Style.exit}>
                         <img src="https://img.icons8.com/ios/50/000000/cancel.png" onClick={()=>{props.setStatusOfAdmin(false)}}/>
@@ -47,7 +48,7 @@ const Admin = (props) =>{
                     <div className={Style.container_for_button}>
                         <button onClick={()=>{add_Product()}}>Add Product</button>
                         <button onClick={()=>{delete_Product()}}>Delete Product</button>
-                        <button onClick={()=>{grant_Access()}}>Grant access</button>
+                        {/* <button onClick={()=>{grant_Access()}}>Grant access</button> */}
                     </div>
                 </div>
                 {addProduct ? <ChooseType  data={data} dispatch={dispatch}/> : null }

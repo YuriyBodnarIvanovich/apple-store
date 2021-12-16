@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Style from './Demo.module.css';
 import { useSelector } from 'react-redux';
-import ModalProduct_Mac from '../../../../../CatalogOfGoods/ItemOfProductionMac/ModalProduct/ModalProduct';
-import IphoneModal from '../../../../../CatalogOfGoods/ItemOfProductIphone/ModalWindowOfProduct/IPhone/IphoneModal';
+// import ModalProduct_Mac from '../../../../../CatalogOfGoods/ItemOfProductionMac/ModalProduct/ModalProduct';
+// import IphoneModal from '../../../../../CatalogOfGoods/ItemOfProductIphone/ModalWindowOfProduct/IPhone/IphoneModal';
+import IphoneModal from "../../../../../Goods/ItemOfProductIphone/ModalWindowOfProduct/IphoneModal";
 
 const Demo = (props) => {
   const data = useSelector((state) => state.AdminPage);
@@ -76,12 +77,13 @@ const Demo = (props) => {
     );
   } else if (data.newElement[0].character.KindOfProduct === 'MAC') {
     return (
-      <ModalProduct_Mac
-        CharactersIphoneData={data.newElement[0].character}
-        photo={data.newElement[0].photo[0].imgSrc[0]}
-        price={data.newElement[0].price}
-        catalogOfPhoto={data.newElement[0].photo}
-      />
+      // <ModalProduct_Mac
+      //   CharactersIphoneData={data.newElement[0].character}
+      //   photo={data.newElement[0].photo[0].imgSrc[0]}
+      //   price={data.newElement[0].price}
+      //   catalogOfPhoto={data.newElement[0].photo}
+      // />
+      <></>
     );
   } else {
     return <h1>Sorry</h1>;

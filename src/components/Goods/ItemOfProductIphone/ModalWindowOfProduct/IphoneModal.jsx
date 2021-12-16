@@ -11,10 +11,11 @@ const IphoneModal = (props) => {
     props.photoData[0].color
   );
   const themeMode = useSelector((state) => state.MainPage.themeMode);
+  const dataIphone = useSelector((state) => state.GoodsPage.goods);
 
   // const data = useSelector(state=>state.AdminPage);
   const dataUser = true;
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   function setColor(color, index) {
     setColorOfProduct(color);
@@ -61,6 +62,12 @@ const IphoneModal = (props) => {
     //     .catch(function (error) {
     //         console.log(error);
     //     });
+
+    console.log('props.itemData', props.itemData);
+    const data = dataIphone;
+    data.push(props.itemData)
+    dispatch({ type: 'CHANGE_PRODUCT', goods: data });
+
   }
 
   return (

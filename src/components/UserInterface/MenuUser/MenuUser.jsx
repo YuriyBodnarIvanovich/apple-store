@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import Style from './MenuUser.module.css';
 import { useDispatch } from 'react-redux';
 import Card from './Card/Card';
-
+import Admin from './Admin/Admin';
 const MenuUser = () => {
   // const data = useSelector((state) => state.ApplePage);
   const dispatch = useDispatch();
 
   const [showCard, setStatusOfCard] = useState(false);
-  // const [showAdmin, setStatusOfAdmin] = useState(false);
+  const [showAdmin, setStatusOfAdmin] = useState(false);
 
   function exit() {
     dispatch({ type: 'CHANGE_STATUS_OF_USER', userStatus: false });
@@ -18,6 +18,8 @@ const MenuUser = () => {
   return (
     <div className={Style.container}>
       <p className={Style.items}>Info</p>
+       <p className={Style.items} onClick={()=>{setStatusOfAdmin(true)}}>Admin</p>
+      {showAdmin && <Admin className={Style.items} setStatusOfAdmin={setStatusOfAdmin}/>}
       <p
         className={Style.items}
         onClick={() => {

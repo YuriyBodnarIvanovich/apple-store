@@ -49,6 +49,7 @@ const Goods = () => {
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(100000);
 
+  console.log('dataIphone', dataIphone);
   const catalogOfIphone = dataIphone
     .filter((item) => item.price > minValue && item.price < maxValue)
     .map((item) => {

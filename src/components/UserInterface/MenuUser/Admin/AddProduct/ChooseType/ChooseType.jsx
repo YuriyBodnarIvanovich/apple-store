@@ -22,9 +22,9 @@ const ChooseType = (props) =>{
     else {
         return(
             <div className={Style.choose_container}>
-                <button onClick={()=>{setType('MAC')}}>Mac</button>
+                {/* <button onClick={()=>{setType('MAC')}}>Mac</button> */}
                 <button onClick={()=>{setType('IPHONE')}}>Iphone</button>
-                <button onClick={()=>{setType('WATCH')}}>Watch Apple</button>
+                {/* <button onClick={()=>{setType('WATCH')}}>Watch Apple</button> */}
             </div>
         )
     }
