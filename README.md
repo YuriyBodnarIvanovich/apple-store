@@ -1,4 +1,5 @@
 
+
 # Product overview
 
 **Web application for selling Apple equipment in Ukraine** 
@@ -25,3 +26,10 @@ We use official standards:
 
 ## Branching policy:
 The main branch of the repository `main`. When adding new functionality, the corresponding branches are created. After the conflict check, `Pull Request` opens.
+
+## Setup:
+
+    $ git clone https://github.com/YuriyBodnarIvanovich/apple-store.git
+    $ cd apple-store
+    $ npm install
+    $ npm start
