@@ -26,7 +26,7 @@ const ColorInput = (props) =>{
 
     return(
         <div className={Style.name_container}>
-            <input placeholder={"Input color"} value={color} onChange={(event => {setColor(event.target.value)})}/>
+            <input type="color" placeholder={"Input color"} value={color} onChange={(event => {setColor(event.target.value)})}/>
             <button onClick={()=>{saveColor()}}>Next</button>
         </div>
     )
